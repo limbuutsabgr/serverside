@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Magician's Code - Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="event.js"></script>
+  </head>
+  <body>
+    <div class="title">
+    <h1>Magician's Code</h1><hr>
+    </div>
+    <div>
+      <div class="items-left">
+        <form action="/create" method="POST">
+          <div class="items">
+            <label for 'label_mp' id="label_mp"><b>Magic Potion x </b>
+            <input type="number" id="number_mp" name="number_mp" value="0" min="0" max="99">
+            <input type="button" id="button_mp" name="button_mp" value="add to cart" onclick="addMp(event)">
+            </label>
+          </div>
+
+          <div class="items">
+            <label id="label_invisibility"><b>Invisibility Cloak x </b>
+            <input type="number" id="number_invisibility" name="number_invisibility" value="0" min="0" max="99">
+            <input type="button" id="button_invisibility" name="button_invisibility" value="add to cart" onclick="addInvisibility(event)">
+            </label>
+          </div>
+
+          <div class="items">
+            <label id="label_spellbook"><b>Spellbook of Enchantments x </b>
+            <input type="number" id="number_spellbook" name="number_spellbook" value="0" min="0" max="99">
+            <input type="button" id="button_spellbook" name="button_spellbook" value="add to cart" onclick="addSpellbook(event)">
+            </label>
+          </div>
+
+          <div class="items">
+            <label id="label_broom"><b>Flying Broomstick x </b>
+            <input type="number" id="number_broom" name="number_broom" value="0" min="0" max="99">
+            <input type="button" id="button_broom" name="button_broom" value="add to cart" onclick="addBroom(event)">
+            </label>
+          </div>
+
+          <div class="items">
+            <label id="label_crystal"><b>Crystal Ball x </b>
+            <input type="number" id="number_crystal" name="number_crystal" value="0" min="0" max="99">
+            <input type="button" id="button_crystal" name="button_crystal" value="add to cart" onclick="addCrystal(event)">
+            </label>
+          </div>
+          <input type="submit" value="Create"/>
+        </form>
+      </div>
+      <div class="items-right">
+        <h2>My Cart</h2><hr>
+        <div id="add">
+        </div>
+    </div>
+  </body>
+</html>
+

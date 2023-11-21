@@ -1,0 +1,29 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background-color:#3006f9;
+	color:black
+}
+
+.input{
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	text-align: center;
+	width:100%;
+}
+
+.input h2{
+	font-size:50px;
+}
+
+.input form{
+	margin:20px auto;
+	line-height:20px;	
+}
+
+.input form input,button {
+	background-color:white;
+
+}

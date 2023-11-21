@@ -1,0 +1,17 @@
+div.title{
+  text-align: center;
+}
+
+div.items{
+  min-height: 100px;
+}
+
+div.items-left{
+  float:left;
+  width:70%;
+}
+
+div.items-right{
+  float:right;
+  width:30%;
+}
