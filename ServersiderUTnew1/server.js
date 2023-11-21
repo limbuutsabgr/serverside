@@ -159,6 +159,9 @@ const createDocument = (db, createddocuments, callback) => {
 app.get('/create', (req, res) => {
   return res.status(200).render('create');
 });
+app.get('/ordercomplete', (req, res) => {
+  return res.status(200).render('ordercomplete');
+});
 
 app.post('/create', (req, res) => {
   client.connect((err) => {
@@ -376,7 +379,101 @@ app.get('/logout', function(req, res){
     res.redirect('/login');
 });
 
+//api
+//Create(POST)
+app.post('/api/cart', function(req, res) {
+    const user = `${req.session.userid}`;
+    const documents = {
+        "_id": new ObjectID(),
+        "ownerID": user,
+        "magicPotion": parseInt(req.body.magicPotion),
+        "invisibilityCloak": parseInt(req.body.invisibilityCloak),
+        "spellbookOfEnchantments": parseInt(req.body.spellbookOfEnchantments),
+        "flyingBroomstick": parseInt(req.body.flyingBroomstick),
+        "crystalBall": parseInt(req.body.crystalBall),
+    };
+
+    client.connect((err) => {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+
+        createDocument(db, documents, () => {
+            client.close();
+            console.log("Closed DB connection");
+            res.status(201).json({ message: "Document is created successfully!" });
+        });
+    });
+});
+
+//Read(GET)
+app.get('/api/cart/:ownerID', function(req, res) {
+    const user = req.params.ownerID;
+    const criteria = { "ownerID": user };
+
+    client.connect((err) => {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+
+        findDocument(db, criteria, (docs) => {
+            client.close();
+            console.log("Closed DB connection");
+
+            if (docs.length > 0) {
+                res.status(200).json(docs[0]);
+            } else {
+                res.status(404).json({ message: "Cart not found for the specified user" });
+            }
+        });
+    });
+});
+
+//Update(PUT)
+app.put('/api/cart/:ownerID', function(req, res) {
+    const user = req.params.ownerID;
+    const criteria = { "ownerID": user };
+    const changes = {
+        "magicPotion": parseInt(req.body.magicPotion),
+        "invisibilityCloak": parseInt(req.body.invisibilityCloak),
+        "spellbookOfEnchantments": parseInt(req.body.spellbookOfEnchantments),
+        "flyingBroomstick": parseInt(req.body.flyingBroomstick),
+        "crystalBall": parseInt(req.body.crystalBall),
+    };
+
+    client.connect((err) => {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+
+        updateDocument(db, criteria, changes, () => {
+            client.close();
+            console.log("Closed DB connection");
+            res.status(200).json({ message: "Update successful!" });
+        });
+    });
+});
+
+//Delete(DELETE)
+app.delete('/api/cart/:ownerID', function(req, res) {
+    const user = req.params.ownerID;
+    const criteria = { "ownerID": user };
+
+    client.connect((err) => {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+
+        deleteDocument(db, criteria, () => {
+            client.close();
+            console.log("Closed DB connection");
+            res.status(200).json({ message: "Document is successfully deleted." });
+        });
+    });
+});
+
+
+
+
 
 app.listen(process.env.PORT || 8099, () => {
   console.log("Server is running on port 8099");
 });
+
+
