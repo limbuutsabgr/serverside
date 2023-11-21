@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title> Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="welcome">
+	<h1>Welcome to Home Page</h1>
+	<form action="/search" method="get">
+  		<button type="submit" name="hItems">Search Items in Cart</button>
+	</form>
+
+	<form action="/update" method="get">
+  		<button type="submit" name="hQuantity">Change Quantity</button>
+	</form>
+
+  	<form action="/checkout" method="post">
+      		<button type="submit">Checkout</button>
+  	</form>
+  	<form action="/logout" method="get">
+      		<button type="submit">Log out</button>
+  	</form>
+
+</div>
+</body>
+</html>

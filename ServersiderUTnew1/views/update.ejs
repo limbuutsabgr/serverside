@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Search</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="welcome">
+    <h1>Search for an Item</h1>
+    <form action="/update" method="post">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required>
+	<input type="text" id="amount" name="amount" required>
+        <button type="submit">Update</button>
+    </form>
+  	<form action="/home" method="get">
+      		<button type="submit">back to home</button>
+  	</form>
+
+</body>
+</html>
+
